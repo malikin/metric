@@ -11,13 +11,18 @@ init_per_testcase(_, Config) ->
     Config.
 
 smoke_test(_Config) ->
-    metric_app:report(<<"test">>, 3),
-    metric_app:report(<<"test">>, 3),
-    metric_app:report(<<"test">>, 3),
-    3.0 = metric_app:average(<<"test">>).
+    metric_app:report(<<"test0">>, 3),
+    metric_app:report(<<"test0">>, 3),
+    metric_app:report(<<"test0">>, 3),
+    metric_app:report(<<"test1">>, 1.5),
+    metric_app:report(<<"test1">>, 2.5),
+    metric_app:report(<<"test1">>, 3.5),
+    3.0 = metric_app:average(<<"test0">>),
+    2.5 = metric_app:average(<<"test1">>).
 
-concurrent_write_test(_Config) ->
-    [metric_app:report(MetricName, MetricValue) || MetricName <- [<<"test1">>, <<"test2">>, <<"test3">>], MetricValue <- lists:seq(1, 1000)].
+% concurrent_write_test(_Config) ->
+    % [metric_app:report(MetricName, MetricValue) || MetricName <- [<<"test1">>, <<"test2">>, <<"test3">>], MetricValue <- lists:seq(1, 1000)].
 
 end_per_testcase(_, _Config) ->
     ok.
+

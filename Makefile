@@ -5,6 +5,7 @@ console:
 	./rebar3 shell
 
 test:
+	./rebar3 eunit
 	./rebar3 ct
 
 dialyzer:

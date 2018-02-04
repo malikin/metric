@@ -2,9 +2,8 @@
 
 metric
 =====
-
+    Simple application for collecting metrics
 
 Build
 -----
-
-    make compile
+    make build - analyze code (dialyzer) compile and run tests

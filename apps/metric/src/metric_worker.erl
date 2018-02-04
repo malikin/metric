@@ -7,6 +7,10 @@
 
 -behaviour(gen_server).
 
+-ifdef(TEST).
+-include_lib("eunit/include/eunit.hrl").
+-endif.
+
 %% API
 -export([start_link/1]).
 
@@ -62,4 +66,21 @@ metric_average(MetricSlice) ->
             MetricSlice
            ),
     Sum / Length.
+
+%%====================================================================
+%% Internal functions
+%%====================================================================
+
+-ifdef(TEST).
+
+metric_average_test() ->
+    ?assertEqual(0, metric_average([])),
+    ?assertEqual(2.5, metric_average(
+                        [
+                         {1517692412974439, <<"test1">>, 1.5},
+                         {1517692412974439, <<"test1">>, 2.5},
+                         {1517692412974439, <<"test1">>, 3.5}
+                        ])).
+
+-endif.
 
