@@ -10,4 +10,6 @@ test:
 dialyzer:
 	./rebar3 dialyzer
 
+build: dialyzer compile test
+
 .PHONY: all compile console test
