@@ -1,6 +1,6 @@
 %%%-------------------------------------------------------------------
 %% @doc metric_storage backend, simple example with ets.
-%% We can also implement it with different storages -
+%% Can be also implemented with a different storages -
 %% dets, redis, memcached..
 %% @end
 %%%-------------------------------------------------------------------
